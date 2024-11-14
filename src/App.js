@@ -21,7 +21,7 @@ function App() {
       array[j] = temp;
     }
   }
-
+  
   useEffect(() => {
     shuffleArray(images);
     setCards(images);
