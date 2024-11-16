@@ -5,7 +5,7 @@ import victini from './imagenes/victini.jpg';
 
 
 
-const images = [
+const imagenes = [
   {
     src: infernape,
     player: 'Infernape'
@@ -40,4 +40,4 @@ const images = [
   },
 ];
 
-export { images } 
+export { imagenes } 
