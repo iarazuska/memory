@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './componets/Cards';
 import './App.css';
-
 import { imagenes } from './importarimg.js';
 
 function App() {
@@ -23,14 +22,18 @@ function App() {
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
-  }
+  };
+
+  const recargarPagina = () => {
+    window.location.reload();
+  };
 
   const resetGame = () => {
     setUnflippedCards([...Array(cards.length).keys()]);
     setTimeout(() => {
       const shuffledCards = shuffleArray(imagenes);
-      setCards(shuffledCards); 
-      setAttempts(0); 
+      setCards(shuffledCards);
+      setAttempts(0);
       setFirstCard({});
       setSecondCard({});
       setUnflippedCards([...Array(shuffledCards.length).keys()]);
@@ -38,7 +41,7 @@ function App() {
       setTimeout(() => {
         setUnflippedCards([]);
       }, 1000);
-    }, 500); 
+    }, 500);
   };
 
   useEffect(() => {
@@ -71,7 +74,7 @@ function App() {
       const match = firstCard.name === secondCard.name;
       match ? disableCards() : unflipCards();
     }
-  }
+  };
 
   const disableCards = () => {
     setDisabledCards([...disabledCards, firstCard.number, secondCard.number]);
@@ -89,13 +92,14 @@ function App() {
   const resetCards = () => {
     setFirstCard({});
     setSecondCard({});
-  }
+  };
 
   return (
     <div className="app">
       <div className="header">
         <h1>Juego de Memory</h1>
         <p>Intentos: {attempts}</p>
+        <button onClick={recargarPagina}>Recargar página</button>
       </div>
       <div className="cards-container">
         {cards.map((card, index) => (
